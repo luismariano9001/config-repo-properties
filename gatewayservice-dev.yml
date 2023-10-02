@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: wastemanagerservice
+          uri: lb://wastemanagerservice
+          predicates:
+            - Path=/wastemanagerservice/**
+          filters:
+            - StripPrefix=1
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
